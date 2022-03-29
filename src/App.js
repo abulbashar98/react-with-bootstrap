@@ -1,23 +1,56 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Button, Modal, Spinner } from 'react-bootstrap';
 import './App.css';
-import Bootcontainer from './components/Bootcontainer/Bootcontainer';
+import Cardgroup from './components/Cardgroup/Cardgroup';
+
+
 
 function App() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div className="App">
-      <button type="button" className="btn btn-primary">Primary</button>
-      <button type="button" className="btn btn-secondary">Secondary</button>
-      <button type="button" className="btn btn-success">Success</button>
-      <button type="button" className="btn btn-danger">Danger</button>
-      <button type="button" className="btn btn-warning">Warning</button>
-      <button type="button" className="btn btn-info">Info</button>
-      <button type="button" className="btn btn-light">Light</button>
-      <button type="button" className="btn btn-dark">Dark</button>
+      <h1>Hello from React Bootstrap... Quite a piece...</h1>
 
-      <button type="button" className="btn btn-link">Link</button>
-      <Bootcontainer></Bootcontainer>
-    </div>
-  );
+      <Cardgroup></Cardgroup>
+
+
+
+      <Button variant="danger">React Boot</Button>
+      <Button variant="warning">React Boot</Button>
+      <br></br>
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+      <br></br>
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div >
+
+  )
 }
+
+
+
+
+
 
 export default App;
